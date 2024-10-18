@@ -4,9 +4,10 @@ import axios from "axios";
 
 const Read = () => {
 
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]) // explain 
 
-  useEffect(() => {
+  useEffect(() => { // explain use effect
+    // expplain the entire bellow
     axios.get('https://jsonblob.com/api/jsonblob/1287718524221775872')
       .then((response) => {
         console.log(response.data);
