@@ -4,16 +4,17 @@ import axios from "axios";
 
 const Read = () => {
 
-  const [movies, setMovies] = useState([]) // explain 
+  const [movies, setMovies] = useState([]) // this is useState which allows me to add state variable to the functional/working component. this also store and manage state as well. 
 
-  useEffect(() => { // explain use effect
-    // expplain the entire bellow
+  useEffect(() => { // you tell React that your component needs to do something after render
+
+    // axios used to communicate with the backend and it 
     axios.get('https://jsonblob.com/api/jsonblob/1287718524221775872')
-      .then((response) => {
+      .then((response) => { //then() whole block handles the response returned by the server after the POST request is successfully processed
         console.log(response.data);
         setMovies(response.data.movies);
       })
-      .catch((error) => {
+      .catch((error) => { // handles errors 
         console.log(error);
       });
     });
