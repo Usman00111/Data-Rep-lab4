@@ -17,7 +17,7 @@ const Read = () => {
       .catch((error) => { // handles errors 
         console.log(error);
       });
-    });
+    },[]);
 
     return (
       <div>

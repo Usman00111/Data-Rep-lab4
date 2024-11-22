@@ -27,16 +27,16 @@ useEffect(() => {
         .catch((error) => {
             console.log(error);
         });
-}, [id]);
+},[id]);
 
 //once submitted new info then the info is saved and available to read page for view
 const handleSubmit = (event) => {
     event.preventDefault();
-    const newMovie = { id, title, movieYear, moviePoster };
-    axios.put('http://localhost:4000/api/movie/' + id, newMovie)
+    const newMovie = { id, title, movieYear, moviePoster }; //allows you to submit new movie title, movie year and movie poster
+    axios.put('http://localhost:4000/api/movie/' + id, newMovie)// Employed axios for HTTP requests to retrieve and update movie data.
         .then((res) => {
             console.log(res.data);
-            navigate('/read');
+            navigate('/read'); //navigates to new page
         });
 }
 
