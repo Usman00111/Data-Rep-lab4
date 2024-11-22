@@ -38,7 +38,7 @@ const movieModel = mongoose.model('myMovies', movieSchema);
 //fetches all the data of the movies 
 app.get('/api/movies', async (req, res) => {
     const movies = await movieModel.find({});
-    console.log(movies)
+    //console.log(movies)
     res.status(200).json(movies);
 });
 
@@ -50,7 +50,7 @@ app.get('/api/movie/:id', async (req, res) => {
 
 //this is a post request to submit the data to the server 
 app.post('/api/movies', async (req, res) => {
-    console.log(req.body.title);
+    //console.log(req.body.title);
     const { title, movieYear, moviePoster } = req.body;
 
     //saving to database
