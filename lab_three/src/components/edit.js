@@ -8,16 +8,16 @@ import { useNavigate } from "react-router-dom";
 export default function Edit(props) {
   let { id } = useParams();
   const [title, setTitle] = useState("");
-  const [year, setYear] = useState("");
-  const [poster, setPoster] = useState("");
+  const [movieYear, setYear] = useState("");
+  const [moviePoster, setPoster] = useState("");
   const navigate = useNavigate();
 
 useEffect(() => {
     axios.get('http://localhost:4000/api/movie/' + id)
         .then((response) => {
             setTitle(response.data.title);
-            setYear(response.data.year);
-            setPoster(response.data.poster);
+            setYear(response.data.movieYear);
+            setPoster(response.data.moviePoster);
         })
         .catch((error) => {
             console.log(error);
@@ -26,7 +26,7 @@ useEffect(() => {
 
 const handleSubmit = (event) => {
     event.preventDefault();
-    const newMovie = { id, title, year, poster };
+    const newMovie = { id, title, movieYear, moviePoster };
     axios.put('http://localhost:4000/api/movie/' + id, newMovie)
         .then((res) => {
             console.log(res.data);
@@ -48,14 +48,14 @@ return (
                 <label>Release Year: </label>
                 <input type="text" 
                 className="form-control" 
-                value={year} 
+                value={movieYear} 
                 onChange={(e) => setYear(e.target.value)} />
             </div>
             <div className="form-group">
                 <label>Poster URL: </label>
                 <input type="text" 
                 className="form-control" 
-                value={poster} 
+                value={moviePoster} 
                 onChange={(e) => setPoster(e.target.value)} />
             </div>
             <div className="form-group">
