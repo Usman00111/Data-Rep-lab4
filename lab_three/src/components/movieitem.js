@@ -17,7 +17,8 @@ const MovieItem = (props)=> {
             <footer>{props.mymovie.movieYear}</footer>
           </blockquote>
         </Card.Body>
-        <Link to={"/edit/" + props.mymovie._id} className="btn btn-primary">Edit</Link>
+        <Link to={"/edit/" + props.mymovie._id} className="btn btn-primary">Edit</Link> 
+        {/* edit but added and import at the top */}
       </Card>
     </div>
   );
