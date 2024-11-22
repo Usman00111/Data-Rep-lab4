@@ -6,11 +6,14 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 export default function Edit(props) {
+    //useParams is used to get the id of the movie from the URL, 
+    //allowing us to retrieve the specific movie data from the database. This allows to load and edit details for a single, specific movie.
   let { id } = useParams();
   const [title, setTitle] = useState("");
   const [movieYear, setYear] = useState("");
   const [moviePoster, setPoster] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //here it is used to after the user submit the changes and once saved is updtaed then
+  //useNavigate is called to redirect the user back to the "read" page where they can view all movies, including the one they just edited.
 
 useEffect(() => {
     axios.get('http://localhost:4000/api/movie/' + id)
@@ -24,6 +27,7 @@ useEffect(() => {
         });
 }, [id]);
 
+//once submitted new info then the info is saved and available to read page for view
 const handleSubmit = (event) => {
     event.preventDefault();
     const newMovie = { id, title, movieYear, moviePoster };
@@ -43,6 +47,7 @@ return (
                 className="form-control" 
                 value={title} 
                 onChange={(e) => setTitle(e.target.value)} />
+                {/*set title to new */}
             </div>
             <div className="form-group">
                 <label>Release Year: </label>
@@ -50,6 +55,7 @@ return (
                 className="form-control" 
                 value={movieYear} 
                 onChange={(e) => setYear(e.target.value)} />
+                {/* set movie year*/}
             </div>
             <div className="form-group">
                 <label>Poster URL: </label>
@@ -57,6 +63,7 @@ return (
                 className="form-control" 
                 value={moviePoster} 
                 onChange={(e) => setPoster(e.target.value)} />
+                {/* set movie poster */}
             </div>
             <div className="form-group">
                 <input type="submit" value="Edit Movie" className="btn btn-primary" />
