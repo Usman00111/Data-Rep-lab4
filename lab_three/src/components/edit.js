@@ -15,7 +15,9 @@ export default function Edit(props) {
   const navigate = useNavigate(); //here it is used to after the user submit the changes and once saved is updtaed then
   //useNavigate is called to redirect the user back to the "read" page where they can view all movies, including the one they just edited.
 
+  //Used  useEffect to manage component state and perform data fetching and updating.
 useEffect(() => {
+    //Employed axios for HTTP requests to retrieve and update movie data.
     axios.get('http://localhost:4000/api/movie/' + id)
         .then((response) => {
             setTitle(response.data.title);
